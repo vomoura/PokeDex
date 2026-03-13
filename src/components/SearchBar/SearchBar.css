@@ -1,0 +1,31 @@
+.search-bar-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  pointer-events: none;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 16px 16px 16px 44px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  background: #F2F2F2;
+  color: #747476;
+  transition: background 0.2s;
+}
+
+.search-bar input:focus {
+  background: #E8E8E8;
+}
+
+.search-bar input::placeholder {
+  color: #747476;
+}

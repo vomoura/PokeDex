@@ -1,0 +1,70 @@
+.header {
+  background: white;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-pokeball {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header-top {
+  display: flex;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  gap: 20px;
+  z-index: 1;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.header h1 {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #17171B;
+  margin: 100px 0 4px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.header > p {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #747476;
+  margin-bottom: 16px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.header .search-bar {
+  padding: 0 40px 20px;
+  position: relative;
+  z-index: 1;
+}

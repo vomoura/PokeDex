@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import PokemonList from './components/PokemonList'
-import PokemonDetail from './components/PokemonDetail'
-import SearchBar from './components/SearchBar'
+import Home from './components/Home/Home'
+import PokemonList from './components/PokemonList/PokemonList'
+import PokemonDetail from './components/PokemonDetail/PokemonDetail'
 import './App.css'
 
 function App() {
@@ -10,22 +10,21 @@ function App() {
 
   return (
     <div className="app">
-      <header className="header">
-        <h1>Pokédex</h1>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      </header>
-      <main className="main">
-        <PokemonList 
-          searchTerm={searchTerm}
-          onSelectPokemon={setSelectedPokemon}
-        />
-        {selectedPokemon && (
-          <PokemonDetail 
-            pokemon={selectedPokemon}
-            onClose={() => setSelectedPokemon(null)}
+      <div className="container">
+        <Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <main className="main">
+          <PokemonList
+            searchTerm={searchTerm}
+            onSelectPokemon={setSelectedPokemon}
           />
-        )}
-      </main>
+          {selectedPokemon && (
+            <PokemonDetail
+              pokemon={selectedPokemon}
+              onClose={() => setSelectedPokemon(null)}
+            />
+          )}
+        </main>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,154 @@
+.pokemon-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.pokemon-detail {
+  background: white;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.detail-header {
+  padding: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: #f0f0f0;
+}
+
+.detail-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1D1D1D;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.detail-header .pokemon-id {
+  font-size: 16px;
+  color: #666;
+  font-weight: 700;
+}
+
+.detail-image {
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  display: block;
+}
+
+.detail-content {
+  padding: 0 24px 24px;
+}
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1D1D1D;
+  margin-bottom: 12px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-name {
+  min-width: 120px;
+  font-weight: 600;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 8px;
+  background: #E0E0E0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: #DC0A2D;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.stat-value {
+  min-width: 40px;
+  text-align: right;
+  font-weight: 700;
+  color: #1D1D1D;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-size: 16px;
+  color: #1D1D1D;
+  font-weight: 600;
+  text-transform: capitalize;
+}

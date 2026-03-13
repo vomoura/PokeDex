@@ -1,0 +1,12 @@
+.pokemon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  padding: 40px;
+}
