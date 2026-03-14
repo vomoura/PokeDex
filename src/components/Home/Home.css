@@ -3,7 +3,6 @@
   padding: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   position: relative;
-  overflow: hidden;
 }
 
 .header-pokeball {
@@ -15,6 +14,7 @@
   transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .header-top {
@@ -66,5 +66,5 @@
 .header .search-bar {
   padding: 0 40px 20px;
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
