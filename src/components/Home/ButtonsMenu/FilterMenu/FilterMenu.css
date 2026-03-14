@@ -1,0 +1,214 @@
+.filter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: filterFadeIn 0.2s ease;
+}
+
+.filter-overlay.closing {
+  animation: filterFadeOut 0.28s ease forwards;
+}
+
+.filter-overlay.closing .filter-sheet {
+  animation: filterSlideDown 0.28s ease forwards;
+}
+
+@keyframes filterFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes filterFadeOut {
+  to { opacity: 0; }
+}
+
+@keyframes filterSlideDown {
+  to { transform: translateY(100%); }
+}
+
+@keyframes filterSlideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.filter-sheet {
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  width: 100%;
+  max-width: 414px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: filterSlideUp 0.3s ease;
+}
+
+.filter-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-content {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 12px 40px 0;
+}
+
+.filter-content::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-handle {
+  width: 60px;
+  height: 4px;
+  background: #E0E0E0;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.filter-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #17171B;
+  margin-bottom: 8px;
+}
+
+.filter-subtitle {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #747476;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.filter-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #17171B;
+  margin: 24px 0 12px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-chips-scroll-wrapper {
+  overflow-x: auto;
+  margin: 0 -40px;
+  padding: 10px 40px 20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-chips-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chips-scroll-wrapper .filter-chips {
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.filter-chip {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.filter-chip.active {
+  box-shadow: 0 5px 15px 0 var(--chip-shadow);
+}
+
+.filter-chip img {
+  width: 25px;
+  height: 25px;
+}
+
+.range-slider {
+  margin: 16px 0 32px;
+}
+
+.range-track {
+  position: relative;
+  height: 4px;
+  background: #E0E0E0;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+.range-fill {
+  position: absolute;
+  height: 100%;
+  background: #EA5D60;
+  border-radius: 2px;
+}
+
+.range-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #EA5D60;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  color: #17171B;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 12px;
+  padding: 16px 40px 32px;
+  background: #fff;
+}
+
+.filter-btn-reset,
+.filter-btn-apply {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.filter-btn-reset {
+  background: #F2F2F2;
+  color: #747476;
+}
+
+.filter-btn-apply {
+  background: #EA5D60;
+  color: #fff;
+}
+
+.filter-btn-reset:hover,
+.filter-btn-apply:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,102 @@
+.sort-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: sortFadeIn 0.2s ease;
+}
+
+.sort-overlay.closing {
+  animation: sortFadeOut 0.28s ease forwards;
+}
+
+.sort-overlay.closing .sort-sheet {
+  animation: sortSlideDown 0.28s ease forwards;
+}
+
+@keyframes sortFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes sortFadeOut {
+  to { opacity: 0; }
+}
+
+@keyframes sortSlideDown {
+  to { transform: translateY(100%); }
+}
+
+@keyframes sortSlideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.sort-sheet {
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  padding: 12px 40px 32px;
+  width: 100%;
+  max-width: 414px;
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  animation: sortSlideUp 0.3s ease;
+}
+
+.sort-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+.sort-handle {
+  width: 60px;
+  height: 4px;
+  background: #E0E0E0;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.sort-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #17171B;
+  margin-bottom: 8px;
+}
+
+.sort-subtitle {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #747476;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.sort-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sort-option {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #F2F2F2;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #747476;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sort-option.active {
+  background: #EA5D60;
+  color: #fff;
+}
