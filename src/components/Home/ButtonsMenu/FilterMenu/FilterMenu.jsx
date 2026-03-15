@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import './FilterMenu.css'
+import { useLanguage } from '../../../../context/LanguageContext'
 
 import BugIcon from '../../../../assets/icons/Bug-1.svg'
 import BugIcon1 from '../../../../assets/icons/Bug.svg'
@@ -168,6 +169,7 @@ function RangeSlider({ min, max, valueMin, valueMax, onChangeMin, onChangeMax })
 }
 
 function FilterMenu({ filters, onApply, onClose }) {
+  const { t } = useLanguage()
   const startY = useRef(null)
   const isDragging = useRef(false)
   const [dragY, setDragY] = useState(0)
@@ -240,22 +242,22 @@ function FilterMenu({ filters, onApply, onClose }) {
       >
         <div className="filter-content">
           <div className="filter-handle" />
-          <h2 className="filter-title">Filters</h2>
-          <p className="filter-subtitle">Use advanced search to explore Pokémon by type, weakness, height and more!</p>
+          <h2 className="filter-title">{t.filterTitle}</h2>
+          <p className="filter-subtitle">{t.filterSubtitle}</p>
 
-          <h3 className="filter-section-title">Types</h3>
+          <h3 className="filter-section-title">{t.filterTypes}</h3>
           <ChipRow items={TYPES} selected={types} onToggle={k => setTypes(toggleSet(types, k))} scrollable />
 
-          <h3 className="filter-section-title">Weaknesses</h3>
+          <h3 className="filter-section-title">{t.filterWeaknesses}</h3>
           <ChipRow items={TYPES} selected={weaknesses} onToggle={k => setWeaknesses(toggleSet(weaknesses, k))} scrollable />
 
-          <h3 className="filter-section-title">Heights</h3>
+          <h3 className="filter-section-title">{t.filterHeights}</h3>
           <ChipRow items={HEIGHTS} selected={heights} onToggle={k => setHeights(toggleSet(heights, k))} />
 
-          <h3 className="filter-section-title">Weights</h3>
+          <h3 className="filter-section-title">{t.filterWeights}</h3>
           <ChipRow items={WEIGHTS} selected={weights} onToggle={k => setWeights(toggleSet(weights, k))} />
 
-          <h3 className="filter-section-title">Number Range</h3>
+          <h3 className="filter-section-title">{t.filterRange}</h3>
           <RangeSlider
             min={1} max={1025}
             valueMin={rangeMin} valueMax={rangeMax}
@@ -264,8 +266,8 @@ function FilterMenu({ filters, onApply, onClose }) {
         </div>
 
         <div className="filter-actions">
-          <button className="filter-btn-reset" onClick={handleReset}>Reset</button>
-          <button className="filter-btn-apply" onClick={handleApply}>Apply</button>
+          <button className="filter-btn-reset" onClick={handleReset}>{t.reset}</button>
+          <button className="filter-btn-apply" onClick={handleApply}>{t.apply}</button>
         </div>
       </div>
     </div>

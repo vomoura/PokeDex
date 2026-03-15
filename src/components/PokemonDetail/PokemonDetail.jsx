@@ -1,6 +1,8 @@
 import './PokemonDetail.css'
+import { useLanguage } from '../../context/LanguageContext'
 
 function PokemonDetail({ pokemon, onClose }) {
+  const { t } = useLanguage()
   return (
     <div className="pokemon-detail-overlay" onClick={onClose}>
       <div className="pokemon-detail" onClick={(e) => e.stopPropagation()}>
@@ -21,7 +23,7 @@ function PokemonDetail({ pokemon, onClose }) {
             </div>
           </div>
           <div className="detail-section">
-            <h3>Stats</h3>
+            <h3>{t.stats}</h3>
             <div className="stats">
               {pokemon.stats.map(s => (
                 <div key={s.stat.name} className="stat">
@@ -37,11 +39,11 @@ function PokemonDetail({ pokemon, onClose }) {
           <div className="detail-section">
             <div className="info-grid">
               <div className="info-item">
-                <span className="info-label">Altura</span>
+                <span className="info-label">{t.height}</span>
                 <span className="info-value">{pokemon.height / 10}m</span>
               </div>
               <div className="info-item">
-                <span className="info-label">Peso</span>
+                <span className="info-label">{t.weight}</span>
                 <span className="info-value">{pokemon.weight / 10}kg</span>
               </div>
             </div>

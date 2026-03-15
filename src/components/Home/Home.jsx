@@ -1,8 +1,10 @@
 import HeaderButtons from './ButtonsMenu/HeaderButtons'
 import SearchBar from './SearchBar/SearchBar'
+import { useLanguage } from '../../context/LanguageContext'
 import './Home.css'
 
 function Home({ searchTerm, setSearchTerm, sortBy, onSortChange, filters, onFilterChange, selectedGens, onGensChange }) {
+  const { t } = useLanguage()
   return (
     <header className="header">
       <svg className="header-pokeball" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 414 207" fill="none" preserveAspectRatio="xMidYMid meet">
@@ -22,8 +24,8 @@ function Home({ searchTerm, setSearchTerm, sortBy, onSortChange, filters, onFilt
         </defs>
       </svg>
       <HeaderButtons sortBy={sortBy} onSortChange={onSortChange} filters={filters} onFilterChange={onFilterChange} selectedGens={selectedGens} onGensChange={onGensChange} />
-      <h1>Pokédex</h1>
-      <p>Search for Pokémon by name or using the National Pokédex number.</p>
+      <h1>{t.title}</h1>
+      <p>{t.subtitle}</p>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
     </header>
   )

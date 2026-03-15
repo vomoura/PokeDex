@@ -3,6 +3,7 @@ import { usePokemon } from '../../hooks/usePokemon'
 import { fetchPokemonDetails } from '../../services/api'
 import PokemonCard from '../PokemonCard/PokemonCard'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
+import { useLanguage } from '../../context/LanguageContext'
 import './PokemonList.css'
 
 function getHeightCategory(h) {
@@ -34,14 +35,13 @@ function applyFilters(list, filters) {
 }
 
 function NoResults() {
+  const { t } = useLanguage()
   return (
     <div className="no-results">
-      <h2>No Pokémon Matched Your Search!</h2>
-      <p>Try these suggestions to find a Pokémon:</p>
+      <h2>{t.noResultsTitle}</h2>
+      <p>{t.noResultsTip}</p>
       <ul>
-        <li>Reduce the number of search parameters</li>
-        <li>Search for only one Pokémon type at a time</li>
-        <li>Try multiple body sizes and shapes</li>
+        {t.noResultsTips.map((tip, i) => <li key={i}>{tip}</li>)}
       </ul>
     </div>
   )

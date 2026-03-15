@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import './SortMenu.css'
+import { useLanguage } from '../../../../context/LanguageContext'
 
 const SORT_OPTIONS = [
   { key: 'smallest', label: 'Smallest number first' },
@@ -9,6 +10,13 @@ const SORT_OPTIONS = [
 ]
 
 function SortMenu({ selected, onSelect, onClose }) {
+  const { t } = useLanguage()
+  const SORT_OPTIONS = [
+    { key: 'smallest', label: t.sortOptions.smallest },
+    { key: 'highest',  label: t.sortOptions.highest },
+    { key: 'az',       label: t.sortOptions.az },
+    { key: 'za',       label: t.sortOptions.za },
+  ]
   const startY = useRef(null)
   const isDragging = useRef(false)
   const [dragY, setDragY] = useState(0)
@@ -57,8 +65,8 @@ function SortMenu({ selected, onSelect, onClose }) {
         onMouseLeave={handleDragEnd}
       >
         <div className="sort-handle" />
-        <h2 className="sort-title">Sort</h2>
-        <p className="sort-subtitle">Sort Pokémon alphabetically or by National Pokédex number!</p>
+        <h2 className="sort-title">{t.sortTitle}</h2>
+        <p className="sort-subtitle">{t.sortSubtitle}</p>
         <div className="sort-options">
           {SORT_OPTIONS.map(opt => (
             <button
