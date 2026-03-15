@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react'
 import generationIcon from '../../../assets/icons/Generation.svg'
 import sortIcon from '../../../assets/icons/Sort.svg'
 import filterIcon from '../../../assets/icons/Filter.svg'
+import languageIcon from '../../../assets/icons/Language.svg'
 import GenerationMenu from './GenerationMenu/GenerationMenu'
 import SortMenu from './SortMenu/SortMenu'
 import FilterMenu from './FilterMenu/FilterMenu'
+import { useLanguage } from '../../../context/LanguageContext'
 
 function HeaderButtons({ sortBy, onSortChange, filters, onFilterChange, selectedGens, onGensChange }) {
+  const { lang, toggle } = useLanguage()
   const [showGen, setShowGen] = useState(false)
   const [showSort, setShowSort] = useState(false)
   const [showFilter, setShowFilter] = useState(false)
@@ -14,12 +17,16 @@ function HeaderButtons({ sortBy, onSortChange, filters, onFilterChange, selected
   const menuOpen = showGen || showSort || showFilter
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    document.documentElement.style.overflowY = menuOpen ? 'hidden' : ''
+    return () => { document.documentElement.style.overflowY = '' }
   }, [menuOpen])
 
   return (
     <>
+      <button className="header-btn lang-btn" onClick={toggle}>
+        <img src={languageIcon} alt="Language" />
+        <span className="lang-label">{lang === 'en' ? 'EN' : 'PT'}</span>
+      </button>
       <div className="header-top">
         <button className="header-btn" onClick={() => setShowGen(true)}>
           <img src={generationIcon} alt="Generation" />

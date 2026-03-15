@@ -3,6 +3,7 @@ import GenPattern from '../../../../assets/icons/GenPattern.svg'
 import GenPokeball from '../../../../assets/icons/GenPokeball.svg'
 import GenPokeballDark from '../../../../assets/icons/GenPokeballDark.svg'
 import './GenerationMenu.css'
+import { useLanguage } from '../../../../context/LanguageContext'
 
 import g1a from '../../../../assets/images/generation i/001.png'
 import g1b from '../../../../assets/images/generation i/004.png'
@@ -45,6 +46,7 @@ const GENERATIONS = [
 ]
 
 function GenerationMenu({ selected, onApply, onClose }) {
+  const { t } = useLanguage()
   const startY = useRef(null)
   const isDragging = useRef(false)
   const [dragY, setDragY] = useState(0)
@@ -107,8 +109,8 @@ function GenerationMenu({ selected, onApply, onClose }) {
       >
         <div className="gen-content">
           <div className="gen-handle" />
-          <h2 className="gen-title">Generations</h2>
-          <p className="gen-subtitle">Use search for generations to explore your Pokémon!</p>
+          <h2 className="gen-title">{t.genTitle}</h2>
+          <p className="gen-subtitle">{t.genSubtitle}</p>
           <div className="gen-grid">
             {GENERATIONS.map((gen, i) => {
               const active = localSelected.has(i)
@@ -130,8 +132,8 @@ function GenerationMenu({ selected, onApply, onClose }) {
           </div>
         </div>
         <div className="gen-actions">
-          <button className="gen-btn-reset" onClick={handleReset}>Reset</button>
-          <button className="gen-btn-apply" onClick={handleApply}>Apply</button>
+          <button className="gen-btn-reset" onClick={handleReset}>{t.reset}</button>
+          <button className="gen-btn-apply" onClick={handleApply}>{t.apply}</button>
         </div>
       </div>
     </div>

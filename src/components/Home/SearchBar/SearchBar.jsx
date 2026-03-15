@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './SearchBar.css'
 import SearchIcon from '../../../assets/icons/Search.svg'
+import { useLanguage } from '../../../context/LanguageContext'
 
 let cachedNames = null
 
@@ -13,6 +14,7 @@ async function loadAllNames() {
 }
 
 function SearchBar({ searchTerm, setSearchTerm }) {
+  const { t } = useLanguage()
   const [names, setNames] = useState([])
   const [inputValue, setInputValue] = useState(searchTerm)
   const [suggestions, setSuggestions] = useState([])
@@ -86,7 +88,7 @@ function SearchBar({ searchTerm, setSearchTerm }) {
         )}
         <input
           type="text"
-          placeholder="What Pokémon are you looking for?"
+          placeholder={t.searchPlaceholder}
           value={inputValue}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
