@@ -2,6 +2,7 @@ import './PokemonCard.css'
 import TypeBadge from '../TypeBadge/TypeBadge'
 import PokeballIcon from '../../assets/icons/Pokeball.svg'
 import PatternIcon from '../../assets/icons/Pattern.svg'
+import { formatPokemonName } from '../../utils/formatName'
 
 function PokemonCard({ pokemon, onClick }) {
   const primaryType = pokemon.types[0].type.name
@@ -14,7 +15,7 @@ function PokemonCard({ pokemon, onClick }) {
       </div>
       <div className="pokemon-header">
         <div className="pokemon-id">#{String(pokemon.id).padStart(3, '0')}</div>
-        <h3>{pokemon.name}</h3>
+        <h3>{formatPokemonName(pokemon.name)}</h3>
       </div>
       <div className="types">
         {pokemon.types.map(t => (

@@ -32,17 +32,21 @@ import g8c from '../../../../assets/images/generation viii/816.png'
 import g9a from '../../../../assets/images/generation ix/906.png'
 import g9b from '../../../../assets/images/generation ix/909.png'
 import g9c from '../../../../assets/images/generation ix/912.png'
+import g10a from '../../../../assets/images/generation x/1024px-Browt.png'
+import g10b from '../../../../assets/images/generation x/1024px-Gecqua.png'
+import g10c from '../../../../assets/images/generation x/1024px-Pombon.png'
 
 const GENERATIONS = [
-  { label: 'Generation I',    imgs: [g1a, g1b, g1c] },
-  { label: 'Generation II',   imgs: [g2a, g2b, g2c] },
-  { label: 'Generation III',  imgs: [g3a, g3b, g3c] },
-  { label: 'Generation IV',   imgs: [g4a, g4b, g4c] },
-  { label: 'Generation V',    imgs: [g5a, g5b, g5c] },
-  { label: 'Generation VI',   imgs: [g6a, g6b, g6c] },
-  { label: 'Generation VII',  imgs: [g7a, g7b, g7c] },
-  { label: 'Generation VIII', imgs: [g8a, g8b, g8c] },
-  { label: 'Generation IX',   imgs: [g9a, g9b, g9c] },
+  { imgs: [g1a, g1b, g1c] },
+  { imgs: [g2a, g2b, g2c] },
+  { imgs: [g3a, g3b, g3c] },
+  { imgs: [g4a, g4b, g4c] },
+  { imgs: [g5a, g5b, g5c] },
+  { imgs: [g6a, g6b, g6c] },
+  { imgs: [g7a, g7b, g7c] },
+  { imgs: [g8a, g8b, g8c] },
+  { imgs: [g9a, g9b, g9c] },
+  { imgs: [g10a, g10b, g10c], disabled: true },
 ]
 
 function GenerationMenu({ selected, onApply, onClose }) {
@@ -117,15 +121,17 @@ function GenerationMenu({ selected, onApply, onClose }) {
               return (
                 <button
                   key={gen.label}
-                  className={`gen-card${active ? ' active' : ''}`}
-                  onClick={() => handleCardClick(i)}
+                  className={`gen-card${active ? ' active' : ''}${gen.disabled ? ' disabled' : ''}`}
+                  onClick={() => !gen.disabled && handleCardClick(i)}
+                  disabled={gen.disabled}
                 >
                   <img className="gen-pattern" src={GenPattern} alt="" />
-                  <img className="gen-pokeball" src={GenPokeball} alt="" />
+                  <img className="gen-pokeball" src={gen.disabled ? GenPokeballDark : GenPokeball} alt="" />
+                  {gen.disabled && <span className="gen-coming-soon">{t.comingSoon}</span>}
                   <div className="gen-imgs">
                     {gen.imgs.map((src, j) => <img key={j} src={src} alt="" />)}
                   </div>
-                  <span>{gen.label}</span>
+                  <span>{t.genLabels[i]}</span>
                 </button>
               )
             })}

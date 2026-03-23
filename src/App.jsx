@@ -39,13 +39,13 @@ function App() {
             selectedGens={selectedGens}
             onSelectPokemon={setSelectedPokemon}
           />
-          {selectedPokemon && (
-            <PokemonDetail
-              pokemon={selectedPokemon}
-              onClose={() => setSelectedPokemon(null)}
-            />
-          )}
         </main>
+        {selectedPokemon && (
+          <PokemonDetail
+            pokemon={selectedPokemon}
+            onClose={() => setSelectedPokemon(null)}
+          />
+        )}
       </div>
     </div>
   )
