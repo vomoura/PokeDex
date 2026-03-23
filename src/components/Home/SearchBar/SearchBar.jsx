@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import './SearchBar.css'
 import SearchIcon from '../../../assets/icons/Search.svg'
 import { useLanguage } from '../../../context/LanguageContext'
+import { formatPokemonName } from '../../../utils/formatName'
 
 let cachedNames = null
 
@@ -51,7 +52,7 @@ function SearchBar({ searchTerm, setSearchTerm }) {
   }
 
   function handleSelect(name) {
-    setInputValue(name)
+    setInputValue(formatPokemonName(name))
     setSearchTerm(name)
     setShowSuggestions(false)
   }
@@ -98,7 +99,7 @@ function SearchBar({ searchTerm, setSearchTerm }) {
           <ul className="search-suggestions">
             {suggestions.map(name => (
               <li key={name} onClick={() => handleSelect(name)}>
-                {name}
+                {formatPokemonName(name)}
               </li>
             ))}
           </ul>

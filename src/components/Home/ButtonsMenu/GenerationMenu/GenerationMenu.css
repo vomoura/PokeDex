@@ -138,6 +138,22 @@
   opacity: 1;
 }
 
+.gen-card.disabled {
+  cursor: not-allowed;
+  padding-top: 16px;
+  gap: 10px;
+}
+
+.gen-coming-soon {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #EA5D60 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+}
+
 .gen-card.active span {
   color: #fff;
 }
