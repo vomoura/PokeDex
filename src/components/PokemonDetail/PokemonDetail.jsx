@@ -361,7 +361,7 @@ function StatsTab({ pokemon, typeColor }) {
             </tr>
           ))}
           <tr>
-            <td className="stat-label">TOT</td>
+            <td className="stat-label">Total</td>
             <td className="stat-num">{String(total).padStart(3, "0")}</td>
             <td />
           </tr>
