@@ -5,6 +5,7 @@ import BackArrow from "../../assets/icons/BackArrow.svg?react";
 import CircleDetail from "../../assets/icons/CircleDetail.svg?react";
 import PatternDetail from "../../assets/icons/PatternDetail.svg?react";
 import ShinyIcon from "../../assets/icons/ShinyIcon.svg?react";
+import CryIcon from "../../assets/icons/cryicon.svg?react";
 import TabPokeball from "../../assets/icons/TabPokeball.svg?react";
 import VersionPokeballBlue from "../../assets/icons/VersionPokeballBlue.svg";
 import VersionPokeballRed from "../../assets/icons/VersionPokeballRed.svg";
@@ -442,8 +443,14 @@ function PokemonDetail({ pokemon, onClose }) {
           </svg>
 
           <div className="pd-hero">
-            <button className={`pd-shiny-btn${shiny ? " active" : ""}`} onClick={() => setShiny((s) => !s)}>
+            <button className={`pd-button pd-button-shiny${shiny ? " active" : ""}`} onClick={() => setShiny((s) => !s)}>
               <ShinyIcon />
+            </button>
+            <button className="pd-button pd-button-cry" onClick={() => {
+              const url = pokemon.cries?.latest;
+              if (url) new Audio(url).play();
+            }}>
+              <CryIcon />
             </button>
             <div className="pd-image-wrap">
               <CircleDetail className="pd-circle" />

@@ -84,10 +84,9 @@
   margin: 30px 0;
 }
 
-.pd-shiny-btn {
+.pd-button {
   position: absolute;
   top: 0;
-  right: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -97,7 +96,10 @@
   z-index: 4;
 }
 
-.pd-shiny-btn.active {
+.pd-button-shiny { right: 36px; }
+.pd-button-cry   { right: 0; }
+
+.pd-button.active {
   opacity: 0.5;
 }
 
