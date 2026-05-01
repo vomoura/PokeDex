@@ -1,0 +1,68 @@
+.flavor-text {
+  font-size: 14px;
+  color: #1d1d1d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.flavor-loading {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.weakness-icons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.weakness-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weakness-badge img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.version-icons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.version-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.35;
+  transition: opacity 0.2s;
+}
+
+.version-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.version-btn.active {
+  opacity: 1;
+}
+
+.version-btn.disabled {
+  opacity: 0.15;
+  cursor: not-allowed;
+}
