@@ -6,13 +6,8 @@
 }
 
 @keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
 }
 
 .pd-container {
@@ -55,16 +50,6 @@
   z-index: 1;
 }
 
-.pd-pokeball {
-  position: absolute;
-  right: -20px;
-  top: -10px;
-  width: 180px;
-  height: 180px;
-  opacity: 0.25;
-  z-index: 1;
-}
-
 .pd-pattern {
   position: absolute;
   bottom: 0;
@@ -84,10 +69,9 @@
   margin: 30px 0;
 }
 
-.pd-shiny-btn {
+.pd-button {
   position: absolute;
   top: 0;
-  right: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -97,7 +81,10 @@
   z-index: 4;
 }
 
-.pd-shiny-btn.active {
+.pd-button-shiny { right: 36px; }
+.pd-button-cry   { right: 0; }
+
+.pd-button.active {
   opacity: 0.5;
 }
 
@@ -217,16 +204,9 @@
   opacity: 1;
 }
 
-/* ── TAB CONTENT ── */
+/* ── SHARED TAB CONTENT ── */
 .tab-content {
   padding-top: 4px;
-}
-
-.flavor-text {
-  font-size: 14px;
-  color: #1d1d1d;
-  line-height: 1.6;
-  margin-bottom: 20px;
 }
 
 .section-title {
@@ -266,95 +246,4 @@
 .secondary {
   color: #666;
   font-size: 12px;
-}
-
-.weakness-icons {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.weakness-badge {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.weakness-badge img {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) invert(1);
-}
-
-.version-icons {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.version-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 2px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.35;
-  transition: opacity 0.2s;
-}
-
-.version-btn img {
-  width: 24px;
-  height: 24px;
-}
-
-.version-btn.active {
-  opacity: 1;
-}
-
-.version-btn.disabled {
-  opacity: 0.15;
-  cursor: not-allowed;
-}
-
-/* ── STATS ── */
-.stats-table td {
-  padding: 5px 4px;
-}
-
-.stat-label {
-  color: #666 !important;
-  font-weight: 700 !important;
-  width: 60px !important;
-  font-size: 12px;
-}
-
-.stat-num {
-  color: #1d1d1d !important;
-  font-weight: 700;
-  width: 40px;
-  text-align: right;
-  padding-right: 12px !important;
-}
-
-.stat-bar-cell {
-  width: 100%;
-}
-
-.stat-bar {
-  height: 6px;
-  background: #e0e0e0;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.stat-fill {
-  height: 100%;
-  border-radius: 3px;
-  transition: width 0.4s ease;
 }

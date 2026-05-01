@@ -56,8 +56,11 @@ function PokemonList({ searchTerm, sortBy, filters, selectedGens, onSelectPokemo
   useEffect(() => {
     if (!searchTerm.trim()) {
       setSearchResult(null)
+      setSearching(false)
       return
     }
+
+    setSearching(true)
 
     const timer = setTimeout(async () => {
       const found = pokemon.filter(p =>
@@ -65,10 +68,10 @@ function PokemonList({ searchTerm, sortBy, filters, selectedGens, onSelectPokemo
       )
       if (found.length > 0) {
         setSearchResult(found)
+        setSearching(false)
         return
       }
 
-      setSearching(true)
       try {
         const details = await fetchPokemonDetails(searchTerm.toLowerCase().trim())
         if (details?.id) {
