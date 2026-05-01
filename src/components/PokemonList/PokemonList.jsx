@@ -2,9 +2,9 @@ import { useRef, useCallback, useState, useEffect } from 'react'
 import { usePokemon } from '../../hooks/usePokemon'
 import { fetchPokemonDetails } from '../../services/api'
 import PokemonCard from '../PokemonCard/PokemonCard'
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import { useLanguage } from '../../context/LanguageContext'
 import './PokemonList.css'
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner'
 
 function getHeightCategory(h) {
   if (h < 10) return 'short'
@@ -127,7 +127,7 @@ function PokemonList({ searchTerm, sortBy, filters, selectedGens, onSelectPokemo
           <PokemonCard pokemon={p} onClick={() => onSelectPokemon(p)} />
         </div>
       ))}
-      {loadingMore && <LoadingSpinner />}
+      {loadingMore && <LoadingSpinner/>}
     </div>
   )
 }
