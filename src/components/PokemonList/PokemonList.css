@@ -1,7 +1,7 @@
 .pokemon-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 40px;
 }
 
 .loading {
@@ -41,4 +41,16 @@
   font-size: 14px;
   color: #747476;
   line-height: 1.8;
+}
+
+@media (max-width: 400px) {
+  .pokemon-list {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .pokemon-list {
+    gap: 10px;
+  }
 }

@@ -116,30 +116,30 @@ function GenerationMenu({ selected, onApply, onClose }) {
           <h2 className="gen-title">{t.genTitle}</h2>
           <p className="gen-subtitle">{t.genSubtitle}</p>
           <div className="gen-grid">
-            {GENERATIONS.map((gen, i) => {
-              const active = localSelected.has(i)
-              return (
-                <button
-                  key={gen.label}
-                  className={`gen-card${active ? ' active' : ''}${gen.disabled ? ' disabled' : ''}`}
-                  onClick={() => !gen.disabled && handleCardClick(i)}
-                  disabled={gen.disabled}
-                >
-                  <img className="gen-pattern" src={GenPattern} alt="" />
-                  <img className="gen-pokeball" src={gen.disabled ? GenPokeballDark : GenPokeball} alt="" />
-                  {gen.disabled && <span className="gen-coming-soon">{t.comingSoon}</span>}
-                  <div className="gen-imgs">
-                    {gen.imgs.map((src, j) => <img key={j} src={src} alt="" />)}
-                  </div>
-                  <span>{t.genLabels[i]}</span>
-                </button>
-              )
-            })}
+              {GENERATIONS.map((gen, i) => {
+                const active = localSelected.has(i)
+                return (
+                  <button
+                    key={gen.label}
+                    className={`gen-card${active ? ' active' : ''}${gen.disabled ? ' disabled' : ''}`}
+                    onClick={() => !gen.disabled && handleCardClick(i)}
+                    disabled={gen.disabled}
+                  >
+                    <img className="gen-pattern" src={GenPattern} alt="" />
+                    <img className="gen-pokeball" src={gen.disabled ? GenPokeballDark : GenPokeball} alt="" />
+                    {gen.disabled && <span className="gen-coming-soon">{t.comingSoon}</span>}
+                    <div className="gen-imgs">
+                      {gen.imgs.map((src, j) => <img key={j} src={src} alt="" />)}
+                    </div>
+                    <span>{t.genLabels[i]}</span>
+                  </button>
+                )
+              })}
+            </div>
+          <div className="gen-actions">
+            <button className="gen-btn-reset" onClick={handleReset}>{t.reset}</button>
+            <button className="gen-btn-apply" onClick={handleApply}>{t.apply}</button>
           </div>
-        </div>
-        <div className="gen-actions">
-          <button className="gen-btn-reset" onClick={handleReset}>{t.reset}</button>
-          <button className="gen-btn-apply" onClick={handleApply}>{t.apply}</button>
         </div>
       </div>
     </div>
