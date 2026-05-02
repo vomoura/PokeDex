@@ -247,3 +247,19 @@
   color: #666;
   font-size: 12px;
 }
+
+@media (max-width: 400px) {
+  .pd-header {
+    padding: 40px 20px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .pd-header {
+    padding: 40px 10px 0;
+  }
+
+  .pd-body {
+    padding: 20px 10px;
+  }
+}

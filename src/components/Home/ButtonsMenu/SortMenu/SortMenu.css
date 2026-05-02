@@ -40,7 +40,6 @@
   border-radius: 24px 24px 0 0;
   padding: 12px 40px 32px;
   width: 100%;
-  max-width: 414px;
   max-height: 90vh;
   overflow-y: auto;
   scrollbar-width: none;
@@ -99,4 +98,16 @@
 .sort-option.active {
   background: #EA5D60;
   color: #fff;
+}
+
+@media (max-width: 400px) {
+  .sort-sheet {
+    padding: 12px 20px 32px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sort-sheet {
+    padding: 12px 10px 32px;
+  }
 }

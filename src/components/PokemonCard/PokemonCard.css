@@ -1,3 +1,7 @@
+.pokemon-card-container {
+  container-type: inline-size;
+}
+
 .pokemon-card {
   border-radius: 10px;
   padding: 20px;
@@ -131,4 +135,24 @@
   bottom: 10px;
   right: 10px;
   z-index: 2;
+}
+
+@container (max-width: 340px) {
+  .pokemon-card {
+    padding: 10px;
+  }
+
+  .pokemon-card h3 {
+    font-size: 18px;
+  }
+
+  .pokemon-id {
+    font-size: 10px;
+  }
+
+  .types {
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+  }
 }

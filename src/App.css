@@ -7,7 +7,6 @@
 
 .container {
   width: 100%;
-  max-width: 414px;
   height: 100vh;
   background: #F7F7F7;
   display: flex;
@@ -26,4 +25,16 @@
 
 .main::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 400px) {
+  .main {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .main {
+    padding: 32px 10px;
+  }
 }

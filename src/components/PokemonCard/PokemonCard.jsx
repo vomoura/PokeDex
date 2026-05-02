@@ -8,7 +8,8 @@ function PokemonCard({ pokemon, onClick }) {
   const primaryType = pokemon.types[0].type.name
 
   return (
-    <div className={`pokemon-card ${primaryType}`} onClick={onClick}>
+    <div className="pokemon-card-container">
+      <div className={`pokemon-card ${primaryType}`} onClick={onClick}>
       <div className="card-bg">
         <img className="pattern-bg" src={PatternIcon} alt="" />
         <img className="pokeball-bg" src={PokeballIcon} alt="" />
@@ -23,6 +24,7 @@ function PokemonCard({ pokemon, onClick }) {
         ))}
       </div>
       <img className="pokemon-img" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+      </div>
     </div>
   )
 }

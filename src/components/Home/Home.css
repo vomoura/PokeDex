@@ -87,3 +87,47 @@
   position: relative;
   z-index: 10;
 }
+
+@media (max-width: 400px) {
+  .header-top {
+    right: 20px;
+  }
+
+  .lang-btn {
+    left: 20px;
+  }
+
+  .header h1 {
+    padding: 0 20px;
+  }
+
+  .header > p {
+    padding: 0 20px;
+  }
+
+  .header .search-bar {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-top {
+    right: 10px;
+  }
+
+  .lang-btn {
+    left: 10px;
+  }
+
+  .header h1 {
+    padding: 0 10px;
+  }
+
+  .header > p {
+    padding: 0 10px;
+  }
+
+  .header .search-bar {
+    padding: 0 10px 20px;
+  }
+}
