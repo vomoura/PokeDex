@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 414 207" fill="none">
+  <path d="M312.97 25.374H414C401.396 127.727 313.525 207 207 207 100.475 207 12.604 127.727 0 25.374H101.03C112.534 72.875 155.614 108.174 207 108.174 258.386 108.174 301.466 72.875 312.97 25.374Z" fill="url(#bg1)"/>
+  <path d="M207 68.11C244.898 68.11 275.62 37.616 275.62 0 275.62-37.616 244.898-68.11 207-68.11 169.102-68.11 138.38-37.616 138.38 0 138.38 37.616 169.102 68.11 207 68.11Z" fill="url(#bg2)"/>
+  <path d="M207-207C313.525-207 401.396-127.727 414-25.374H312.97C301.466-72.875 258.386-108.174 207-108.174 155.614-108.174 112.534-72.875 101.03-25.374H0C12.604-127.727 100.475-207 207-207Z" fill="url(#bg0)"/>
+  <defs>
+    <linearGradient id="bg0" x1="207" y1="0" x2="207" y2="185.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F5F5"/><stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <linearGradient id="bg1" x1="207" y1="0" x2="207" y2="185.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F5F5"/><stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <linearGradient id="bg2" x1="207" y1="0" x2="207" y2="185.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F5F5"/><stop offset="1" stop-color="white"/>
+    </linearGradient>
+  </defs>
+</svg>

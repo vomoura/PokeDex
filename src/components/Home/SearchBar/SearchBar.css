@@ -48,17 +48,13 @@
 }
 
 .search-suggestions {
-  position: absolute;
-  top: 100%;
-  left: 10px;
-  right: 10px;
   background: #fff;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   list-style: none;
   max-height: 200px;
   overflow-y: auto;
-  z-index: 50;
+  z-index: 9999;
   scrollbar-width: none;
 }
 
