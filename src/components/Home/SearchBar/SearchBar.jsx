@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import './SearchBar.css'
 import SearchIcon from '../../../assets/icons/Search.svg'
 import { useLanguage } from '../../../context/LanguageContext'
@@ -14,13 +15,15 @@ async function loadAllNames() {
   return cachedNames
 }
 
-function SearchBar({ searchTerm, setSearchTerm }) {
+function SearchBar({ searchTerm, setSearchTerm, className }) {
   const { t } = useLanguage()
   const [names, setNames] = useState([])
   const [inputValue, setInputValue] = useState(searchTerm)
   const [suggestions, setSuggestions] = useState([])
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const [dropdownStyle, setDropdownStyle] = useState({})
   const wrapperRef = useRef(null)
+  const innerRef = useRef(null)
 
   useEffect(() => { loadAllNames().then(setNames) }, [])
 
@@ -34,15 +37,32 @@ function SearchBar({ searchTerm, setSearchTerm }) {
     setSuggestions(matches)
   }, [inputValue, names])
 
+  const suggestionsRef = useRef(null)
+
   useEffect(() => {
     function handleClickOutside(e) {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+      if (
+        wrapperRef.current && !wrapperRef.current.contains(e.target) &&
+        suggestionsRef.current && !suggestionsRef.current.contains(e.target)
+      ) {
         setShowSuggestions(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  useEffect(() => {
+    if (showSuggestions && innerRef.current) {
+      const rect = innerRef.current.getBoundingClientRect()
+      setDropdownStyle({
+        position: 'fixed',
+        top: rect.bottom,
+        left: rect.left + 10,
+        width: rect.width - 20,
+      })
+    }
+  }, [showSuggestions, inputValue])
 
   function handleChange(e) {
     const val = e.target.value
@@ -64,9 +84,13 @@ function SearchBar({ searchTerm, setSearchTerm }) {
     }
   }
 
-  // Sync if parent resets searchTerm
+  // Sync with parent searchTerm
   useEffect(() => {
-    if (!searchTerm) setInputValue('')
+    if (searchTerm) {
+      setInputValue(formatPokemonName(searchTerm))
+    } else {
+      setInputValue('')
+    }
   }, [searchTerm])
 
   function handleClear() {
@@ -76,8 +100,8 @@ function SearchBar({ searchTerm, setSearchTerm }) {
   }
 
   return (
-    <div className="search-bar" ref={wrapperRef}>
-      <div className="search-bar-inner">
+    <div className={`search-bar${className ? ' ' + className : ''}`} ref={wrapperRef}>
+      <div className="search-bar-inner" ref={innerRef}>
         {inputValue.trim() ? (
           <button className="search-clear-btn" onClick={handleClear}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -95,16 +119,17 @@ function SearchBar({ searchTerm, setSearchTerm }) {
           onKeyDown={handleKeyDown}
           onFocus={() => inputValue.trim() && setShowSuggestions(true)}
         />
-        {showSuggestions && suggestions.length > 0 && (
-          <ul className="search-suggestions">
-            {suggestions.map(name => (
-              <li key={name} onClick={() => handleSelect(name)}>
-                {formatPokemonName(name)}
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
+      {showSuggestions && suggestions.length > 0 && createPortal(
+        <ul className="search-suggestions" ref={suggestionsRef} style={dropdownStyle}>
+          {suggestions.map(name => (
+            <li key={name} onClick={() => handleSelect(name)}>
+              {formatPokemonName(name)}
+            </li>
+          ))}
+        </ul>,
+        document.body
+      )}
     </div>
   )
 }

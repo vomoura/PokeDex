@@ -1,21 +1,27 @@
 .header {
+  --scroll-progress: 0;
   background: white;
   padding: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   position: relative;
   flex-shrink: 0;
+  z-index: 20;
+  overflow: hidden;
 }
 
 .header-pokeball {
   position: absolute;
-  top: 38%;
+  top: 0;
   left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   height: auto;
-  transform: translate(-50%, -50%);
+  max-height: 100%;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
+  opacity: calc(1 - var(--scroll-progress));
+  object-fit: contain;
+  object-position: top center;
 }
 
 .header-top {
@@ -25,6 +31,8 @@
   right: 40px;
   gap: 20px;
   z-index: 1;
+  opacity: clamp(0, 1 - var(--scroll-progress) * 3, 1);
+  pointer-events: auto;
 }
 
 .lang-btn {
@@ -35,6 +43,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  opacity: clamp(0, 1 - var(--scroll-progress) * 3, 1);
+  pointer-events: auto;
 }
 
 .lang-label {
@@ -60,7 +70,13 @@
   height: 24px;
 }
 
-.header h1 {
+.header-expandable {
+  overflow: hidden;
+  max-height: calc(300px * (1 - var(--scroll-progress)));
+  opacity: calc(1 - var(--scroll-progress) * 2);
+}
+
+.header-expandable h1 {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 32px;
   font-weight: 700;
@@ -71,7 +87,7 @@
   z-index: 1;
 }
 
-.header > p {
+.header-expandable p {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -82,10 +98,68 @@
   z-index: 1;
 }
 
-.header .search-bar {
+.header-collapsed-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 40px;
+  max-height: calc(60px * var(--scroll-progress));
+  overflow: hidden;
+}
+
+.header-collapsed-bar .header-btn {
+  opacity: clamp(0, (var(--scroll-progress) - 0.7) * 3.33, 1);
+  flex-shrink: 0;
+}
+
+.header-collapsed-bar .search-bar--collapsed {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+.header--collapsed .header-collapsed-bar .search-bar--collapsed {
+  max-width: 100%;
+}
+
+.header .search-bar.search-bar--main {
   padding: 0 40px 20px;
   position: relative;
   z-index: 10;
+  opacity: calc(1 - var(--scroll-progress) * 2);
+  max-height: calc(80px * (1 - var(--scroll-progress)));
+  overflow: hidden;
+}
+
+/* Fully collapsed state - hide expanded elements from interaction */
+.header--collapsed .header-top,
+.header--collapsed .lang-btn {
+  pointer-events: none;
+}
+
+.header--collapsed .search-bar--main {
+  display: none;
+}
+
+/* Collapsed search bar */
+.header--collapsed .search-bar--collapsed {
+  padding: 0;
+}
+
+.header--collapsed .search-bar--collapsed input {
+  padding: 10px 16px 10px 44px;
+  font-size: 14px;
+}
+
+/* Normal state: hide collapsed bar interaction */
+.header:not(.header--collapsed) .header-collapsed-bar {
+  pointer-events: none;
+}
+
+.header:not(.header--collapsed) .search-bar--collapsed {
+  display: none;
 }
 
 @media (max-width: 400px) {
@@ -97,16 +171,20 @@
     left: 20px;
   }
 
-  .header h1 {
+  .header-expandable h1 {
     padding: 0 20px;
   }
 
-  .header > p {
+  .header-expandable p {
     padding: 0 20px;
   }
 
-  .header .search-bar {
+  .header .search-bar.search-bar--main {
     padding: 0 20px 20px;
+  }
+
+  .header-collapsed-bar {
+    padding: 10px 20px;
   }
 }
 
@@ -119,15 +197,19 @@
     left: 10px;
   }
 
-  .header h1 {
+  .header-expandable h1 {
     padding: 0 10px;
   }
 
-  .header > p {
+  .header-expandable p {
     padding: 0 10px;
   }
 
-  .header .search-bar {
+  .header .search-bar.search-bar--main {
     padding: 0 10px 20px;
+  }
+
+  .header-collapsed-bar {
+    padding: 10px;
   }
 }
